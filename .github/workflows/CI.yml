@@ -49,7 +49,7 @@ jobs:
           haxelib list
           haxelib run lime build windows
           
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v2.2.4
         with:
           name: Windows Build
           path: export/release/windows/bin
@@ -90,7 +90,7 @@ jobs:
           haxelib install actuate 
           haxelib list
           haxelib run lime build mac
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v2.2.4
         with:
           name: Mac Build
           path: export/release/macos/bin
@@ -134,7 +134,7 @@ jobs:
           haxelib install actuate 
           haxelib list
           haxelib run lime build linux
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v2.2.4
         with:
           name: Linux Build
           path: export/release/linux/bin
@@ -179,7 +179,7 @@ jobs:
           haxelib list
           haxelib run lime build html5
           
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v2.2.4
         with:
           name: HTML5 Build
           path: export/release/html5/bin

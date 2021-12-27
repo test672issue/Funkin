@@ -3,7 +3,7 @@
 name: CI Builds
 
 # Controls when the workflow will run
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -15,14 +15,14 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      - uses: krdlab/setup-haxe@v1
+      - uses: actions/checkout@v2.3.0
+      - uses: krdlab/setup-haxe@v1.1.6
         with:
-          haxe-version: 4.1.5
+          haxe-version: 4.2.4
       # Runs a set of commands using the runners shell
       - name: script run line haha
         run: |
-          cinst haxe --version 4.1.5 -y
+          cinst haxe --version 4.2.4 -y
           RefreshEnv
           mkdir "%HAXELIB_ROOT%"
           haxelib setup "%HAXELIB_ROOT%"
@@ -37,18 +37,18 @@ jobs:
           haxelib install flixel-ui
           haxelib install hscript
           haxelib install flixel-addons
-          haxelib git faxe https://github.com/uhrobots/faxe
+          haxelib git faxe https://github.com/ashea-code/faxe.git
           haxelib git polymod https://github.com/MasterEric/polymod.git
-          haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
-          haxelib git extension-webm https://github.com/KadeDev/extension-webm
+          haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc.git
+          haxelib git extension-webm https://github.com/KadeDev/extension-webm.git
           haxelib run lime rebuild extension-webm windows
           haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit.git
-          haxelib git hxvm-luajit https://github.com/nebulazorua/hxvm-luajit
+          haxelib git hxvm-luajit https://github.com/nebulazorua/hxvm-luajit.git
           haxelib install actuate 
           haxelib list
           haxelib run lime build windows
           
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v2.2.4
         with:
           name: Windows Build
           path: export/release/windows/bin
@@ -59,10 +59,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      - uses: krdlab/setup-haxe@v1
+      - uses: actions/checkout@v2.3.0
+      - uses: krdlab/setup-haxe@v1.1.6
         with:
-          haxe-version: 4.1.5
+          haxe-version: 4.2.4
       # Runs a set of commands using the runners shell
       - name: script run line haha
         run: |
@@ -78,17 +78,18 @@ jobs:
           haxelib install flixel-ui
           haxelib install hscript
           haxelib install flixel-addons
-          haxelib git faxe https://github.com/uhrobots/faxe
+          haxelib git faxe https://github.com/ashea-code/faxe.git
           haxelib git polymod https://github.com/MasterEric/polymod.git
-          haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
-          haxelib git extension-webm https://github.com/KadeDev/extension-webm
+          haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc.git
+          haxelib git extension-webm https://github.com/KadeDev/extension-webm.git
           haxelib run lime rebuild extension-webm macos
           haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit.git
-          haxelib git hxvm-luajit https://github.com/nebulazorua/hxvm-luajit
+          haxelib git hxvm-luajit https://github.com/nebulazorua/hxvm-luajit.git
           haxelib install actuate 
           haxelib list
           haxelib run lime build mac
-      - uses: actions/upload-artifact@v2
+
+      - uses: actions/upload-artifact@v2.2.4
         with:
           name: Mac Build
           path: export/release/macos/bin
@@ -99,10 +100,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      - uses: krdlab/setup-haxe@v1
+      - uses: actions/checkout@v2.3.0
+      - uses: krdlab/setup-haxe@v1.1.6
         with:
-          haxe-version: 4.1.5
+          haxe-version: 4.2.4
       # Runs a set of commands using the runners shell
       - name: script run line haha
         run: |
@@ -121,17 +122,18 @@ jobs:
           haxelib install flixel-ui
           haxelib install hscript
           haxelib install flixel-addons
-          haxelib git faxe https://github.com/uhrobots/faxe
+          haxelib git faxe https://github.com/ashea-code/faxe.git
           haxelib git polymod https://github.com/MasterEric/polymod.git
-          haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
-          haxelib git extension-webm https://github.com/KadeDev/extension-webm
+          haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc.git
+          haxelib git extension-webm https://github.com/KadeDev/extension-webm.git
           haxelib run lime rebuild extension-webm linux
-          haxelib git linc_luajit https://github.com/MasterEric/linc_luajit.git
+          haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit.git
           haxelib git hxvm-luajit https://github.com/nebulazorua/hxvm-luajit.git
           haxelib install actuate 
           haxelib list
           haxelib run lime build linux
-      - uses: actions/upload-artifact@v2
+
+      - uses: actions/upload-artifact@v2.2.4
         with:
           name: Linux Build
           path: export/release/linux/bin
@@ -142,10 +144,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      - uses: krdlab/setup-haxe@v1
+      - uses: actions/checkout@v2.3.0
+      - uses: krdlab/setup-haxe@v1.1.6
         with:
-          haxe-version: 4.1.5
+          haxe-version: 4.2.4
       # Runs a set of commands using the runners shell
       - name: script run line haha
         run: |
@@ -164,18 +166,18 @@ jobs:
           haxelib install flixel-ui
           haxelib install hscript
           haxelib install flixel-addons
-          haxelib git faxe https://github.com/uhrobots/faxe
+          haxelib git faxe https://github.com/ashea-code/faxe.git
           haxelib git polymod https://github.com/MasterEric/polymod.git
-          haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
-          haxelib git extension-webm https://github.com/KadeDev/extension-webm
+          haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc.git
+          haxelib git extension-webm https://github.com/KadeDev/extension-webm.git
           haxelib run lime rebuild extension-webm linux
-          haxelib git linc_luajit https://github.com/MasterEric/linc_luajit.git
+          haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit.git
           haxelib git hxvm-luajit https://github.com/nebulazorua/hxvm-luajit.git
           haxelib install actuate 
           haxelib list
           haxelib run lime build html5
           
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v2.2.4
         with:
           name: HTML5 Build
           path: export/release/html5/bin
